@@ -38,7 +38,8 @@ public class TlsTest {
 		Console.WriteLine ("\t--ssl2  \tUse SSLv2 - unsupported on Mono");
 		Console.WriteLine ("\t--ssl3  \tUse SSLv3");
 		Console.WriteLine ("\t--tls   \tUse TLSv1");
-		Console.WriteLine ("\t--tls1  \tUse TLSv1");
+		Console.WriteLine ("\t--tls11 \tUse TLSv1.1");
+		Console.WriteLine ("\t--tls12 \tUse TLSv1.2");
 		Console.WriteLine ("{0}class", Environment.NewLine);
 		Console.WriteLine ("\t--stream\tDirectly use the SslClientStream [default]");
 		Console.WriteLine ("\t--web   \tUse the WebRequest/WebResponse classes");
@@ -85,8 +86,13 @@ public class TlsTest {
 					Usage ("Not supported");
 					return;
 				case "--tls":
-				case "--tls1":
 					protocol = Mono.Security.Protocol.Tls.SecurityProtocolType.Tls;
+					break;
+				case "--tls11":
+					protocol = Mono.Security.Protocol.Tls.SecurityProtocolType.Tls11;
+					break;
+				case "--tls12":
+					protocol = Mono.Security.Protocol.Tls.SecurityProtocolType.Tls12;
 					break;
 				// class
 				case "--stream":
